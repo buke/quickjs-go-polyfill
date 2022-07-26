@@ -1,7 +1,6 @@
 package fetch
 
 import (
-	_ "embed"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -23,7 +22,6 @@ type QJSRequest struct {
 }
 
 type QJSResponse struct {
-	// Headers    map[string]string `json:"headers"`
 	Status     int32  `json:"status"`
 	StatusText string `json:"statusText"`
 	OK         bool   `json:"ok"`
@@ -122,10 +120,6 @@ func fetch(req *http.Request) (*http.Response, error) {
 	return res, nil
 }
 
-func prepareResp1(ctx *quickjs.Context, resp *http.Response) (quickjs.Value, error) {
-	return ctx.Null(), nil
-}
-
 func prepareResp(ctx *quickjs.Context, resp *http.Response) (quickjs.Value, error) {
 	defer resp.Body.Close()
 	respBody, err := ioutil.ReadAll(resp.Body)
@@ -189,10 +183,6 @@ func prepareResp(ctx *quickjs.Context, resp *http.Response) (quickjs.Value, erro
 
 		return promise.Call("resolve", retObj)
 	}))
-
-	// respObj.Set("blob", ctx.AsyncFunction(func(ctx *quickjs.Context, this quickjs.Value, promise quickjs.Value, args []quickjs.Value) quickjs.Value {
-	// 	return promise.Call("resolve", ctx.String(args[0].String()+args[1].String()))
-	// }))
 
 	return respObj, nil
 
