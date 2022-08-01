@@ -6,8 +6,6 @@
 [![GoDoc](https://pkg.go.dev/badge/github.com/buke/quickjs-go-polyfill?status.svg)](https://pkg.go.dev/github.com/buke/quickjs-go-polyfill?tab=doc)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fbuke%2Fquickjs-go-polyfill.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fbuke%2Fquickjs-go-polyfill?ref=badge_shield)
 
-Go bindings to QuickJS: a fast, small, and embeddable ES2020 JavaScript interpreter.
-
 ## Features
 * fetch: `fetch`
 * base64: `atob` and `btoa`
