@@ -1,6 +1,9 @@
 package polyfill_test
 
 import (
+	"fmt"
+	"net/http"
+	"net/http/httptest"
 	"time"
 
 	"github.com/buke/quickjs-go"
@@ -19,13 +22,20 @@ func Example() {
 	// Inject polyfills to the context
 	polyfill.InjectAll(ctx)
 
-	ret, _ := ctx.Eval(`
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Header().Set("Content-Type", "application/json; utf-8")
+		_, _ = w.Write([]byte(`{"status": true}`))
+	}))
+
+	ret, _ := ctx.Eval(fmt.Sprintf(`
 	setTimeout(() => {
-		fetch('https://api.github.com/users/buke', {Method: 'GET'}).then(response => response.json()).then(data => {
-			console.log(data.login);
+		fetch('%s', {Method: 'GET'}).then(response => response.json()).then(data => {
+			console.log(data.status);
 		});
 	}, 50);
-	`)
+	`, srv.URL))
+
 	defer ret.Free()
 
 	time.Sleep(time.Millisecond * 100)
@@ -33,5 +43,5 @@ func Example() {
 	rt.ExecuteAllPendingJobs()
 
 	// Output:
-	// buke
+	// true
 }
