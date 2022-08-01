@@ -24,9 +24,4 @@ func TestWindow(t *testing.T) {
 	require.NoError(t, err)
 	require.EqualValues(t, true, ret.Bool())
 
-	// g, _ := ctx.Globals().PropertyNames()
-	// sort.Strings(g)
-	// for _, name := range g {
-	// 	fmt.Println(name)
-	// }
 }

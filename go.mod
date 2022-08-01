@@ -3,7 +3,7 @@ module github.com/buke/quickjs-go-polyfill
 go 1.17
 
 require (
-	github.com/buke/quickjs-go v0.1.4
+	github.com/buke/quickjs-go v0.1.10
 	github.com/stretchr/testify v1.8.0
 )
 
