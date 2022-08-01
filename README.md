@@ -19,14 +19,14 @@ Go bindings to QuickJS: a fast, small, and embeddable ES2020 JavaScript interpre
 ```go
 package main
 import (
-	"testing"
+	"time"
 
 	"github.com/buke/quickjs-go"
-	"github.com/buke/quickjs-go-polyfill"
+	polyfill "github.com/buke/quickjs-go-polyfill"
 )
 
 func main() {
-    // Create a new runtime
+	// Create a new runtime
 	rt := quickjs.NewRuntime()
 	defer rt.Close()
 
@@ -34,14 +34,25 @@ func main() {
 	ctx := rt.NewContext()
 	defer ctx.Close()
 
-    // Register the polyfill
-    polyfill.InjectAll(ctx)
+	// Inject polyfills to the context
+	polyfill.InjectAll(ctx)
 
-	// Evaluate a script
+	ret, _ := ctx.Eval(`
+	setTimeout(() => {
+		fetch('https://api.github.com/users/buke', {Method: 'GET'}).then(response => response.json()).then(data => {
+			console.log(data.login);
+		});
+	}, 50);
+	`)
+	defer ret.Free()
 
-	
+	// Wait for the timeout to finish
+	time.Sleep(time.Millisecond * 100)
 
+	rt.ExecuteAllPendingJobs()
 
+	// Output:
+	// buke
 }
 ```
 
