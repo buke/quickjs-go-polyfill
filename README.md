@@ -62,6 +62,3 @@ Go Reference & more examples: https://pkg.go.dev/github.com/buke/quickjs-go-poly
 
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fbuke%2Fquickjs-go-polyfill.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fbuke%2Fquickjs-go-polyfill?ref=badge_large)
-
-
-
