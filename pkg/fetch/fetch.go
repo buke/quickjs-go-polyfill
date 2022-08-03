@@ -45,15 +45,7 @@ func prepareReq(ctx *quickjs.Context, args []quickjs.Value) (*http.Request, erro
 		if !args[1].IsObject() {
 			return nil, errors.New("2nd argument must be an object")
 		}
-		jsJson := ctx.Globals().Get("JSON")
-		defer jsJson.Free()
-		val := jsJson.Call("stringify", args[1])
-		defer val.Free()
-
-		if val.IsError() {
-			return nil, val.Error()
-		}
-		reader := strings.NewReader(val.String())
+		reader := strings.NewReader(args[1].JSONStringify())
 		if err := json.NewDecoder(reader).Decode(&jsReq); err != nil {
 			return nil, err
 		}
@@ -142,9 +134,7 @@ func prepareResp(ctx *quickjs.Context, resp *http.Response) (quickjs.Value, erro
 	}
 
 	// parse json to js object
-	jsJson := ctx.Globals().Get("JSON")
-	defer jsJson.Free()
-	respObj := jsJson.Call("parse", ctx.String(string(b)))
+	respObj := ctx.ParseJSON(string(b))
 
 	// header object
 	headers := make(map[string]string)
@@ -172,10 +162,7 @@ func prepareResp(ctx *quickjs.Context, resp *http.Response) (quickjs.Value, erro
 	}))
 
 	respObj.Set("json", ctx.AsyncFunction(func(ctx *quickjs.Context, this quickjs.Value, promise quickjs.Value, args []quickjs.Value) quickjs.Value {
-		jsJson := ctx.Globals().Get("JSON")
-		defer jsJson.Free()
-
-		retObj := jsJson.Call("parse", ctx.String(string(respBody)))
+		retObj := ctx.ParseJSON(string(respBody))
 		defer retObj.Free()
 		if retObj.IsError() {
 			return promise.Call("reject", retObj)
