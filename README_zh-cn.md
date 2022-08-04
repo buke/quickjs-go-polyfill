@@ -1,5 +1,5 @@
 # Polyfill for [quickjs-go](https://github.com/buke/quickjs-go)
-English | [简体中文](README_zh-cn.md)
+[English](README.md) | 简体中文
 
 [![Test](https://github.com/buke/quickjs-go-polyfill/workflows/Test/badge.svg)](https://github.com/buke/quickjs-go-polyfill/actions?query=workflow%3ATest)
 [![codecov](https://codecov.io/gh/buke/quickjs-go-polyfill/branch/main/graph/badge.svg?token=4r8TboEuuJ)](https://codecov.io/gh/buke/quickjs-go-polyfill)
@@ -7,14 +7,14 @@ English | [简体中文](README_zh-cn.md)
 [![GoDoc](https://pkg.go.dev/badge/github.com/buke/quickjs-go-polyfill?status.svg)](https://pkg.go.dev/github.com/buke/quickjs-go-polyfill?tab=doc)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fbuke%2Fquickjs-go-polyfill.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fbuke%2Fquickjs-go-polyfill?ref=badge_shield)
 
-## Features
+## 功能 
 * fetch: `fetch`
 * base64: `atob` and `btoa`
 * window: `window`
 * console: `console.log` and `console.error` and `console.warn` and `console.info` and `console.debug` and `console.trace`
 * timers: `setTimeout` and `setInterval` and `clearTimeout` and `clearInterval`
 
-### Usage
+### 用法
 ```go
 package main
 import (
@@ -55,10 +55,10 @@ func main() {
 }
 ```
 
-## Documentation
-Go Reference & more examples: https://pkg.go.dev/github.com/buke/quickjs-go-polyfill
+## 文档
+Go 语言文档和示例: https://pkg.go.dev/github.com/buke/quickjs-go-polyfill
 
-## License
+## 版权协议
 [MIT](./LICENSE)
 
 
