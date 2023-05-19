@@ -37,7 +37,7 @@ func prepareReq(ctx *quickjs.Context, args []quickjs.Value) (*http.Request, erro
 
 	url, err := url.Parse(rawURL)
 	if err != nil {
-		return nil, errors.New(fmt.Sprintf("url '%s' is not valid", rawURL))
+		return nil, fmt.Errorf("url '%s' is not valid", rawURL)
 	}
 
 	var jsReq QJSRequest
@@ -51,7 +51,7 @@ func prepareReq(ctx *quickjs.Context, args []quickjs.Value) (*http.Request, erro
 		}
 	}
 
-	if jsReq.Method != "" {
+	if jsReq.Method == "" {
 		jsReq.Method = "GET"
 	}
 
