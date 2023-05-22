@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/buke/quickjs-go v0.1.12
-	github.com/stretchr/testify v1.8.2
+	github.com/stretchr/testify v1.8.3
 )
 
 require (
