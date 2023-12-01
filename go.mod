@@ -1,6 +1,6 @@
 module github.com/buke/quickjs-go-polyfill
 
-go 1.18
+go 1.20
 
 require (
 	github.com/buke/quickjs-go v0.1.15
