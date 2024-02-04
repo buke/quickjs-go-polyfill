@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"net/http"
 	"net/http/httptest"
-	"time"
 
 	"github.com/buke/quickjs-go"
 	polyfill "github.com/buke/quickjs-go-polyfill"
@@ -38,9 +37,7 @@ func Example() {
 
 	defer ret.Free()
 
-	time.Sleep(time.Millisecond * 100)
-
-	rt.ExecuteAllPendingJobs()
+	ctx.Loop()
 
 	// Output:
 	// true

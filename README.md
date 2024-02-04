@@ -12,7 +12,7 @@ English | [简体中文](README_zh-cn.md)
 * base64: `atob` and `btoa`
 * window: `window`
 * console: `console.log` and `console.error` and `console.warn` and `console.info` and `console.debug` and `console.trace`
-* timers: `setTimeout` and `setInterval` and `clearTimeout` and `clearInterval`
+* timers: `setTimeout` and `clearTimeout` alreay supported by quickjs-go
 
 ### Usage
 ```go
