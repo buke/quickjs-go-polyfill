@@ -2,7 +2,6 @@ package fetch_test
 
 import (
 	"fmt"
-	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -36,13 +35,7 @@ func TestFetch(t *testing.T) {
 	})`, srv.URL))
 	defer val.Free()
 
-	for {
-		_, err := rt.ExecutePendingJob()
-		if err == io.EOF {
-			err = nil
-			break
-		}
-	}
+	ctx.Loop()
 
 	asyncRet, _ := ctx.Eval("ret")
 	defer asyncRet.Free()
