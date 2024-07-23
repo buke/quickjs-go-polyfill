@@ -1,5 +1,5 @@
-github.com/buke/quickjs-go v0.4.12 h1:uC6oBP40DCqbkst0A1T8GqlgZVOZTl+Le6Ib39bpTG4=
-github.com/buke/quickjs-go v0.4.12/go.mod h1:DTNBNlQc+GflC2iemHKotAjdR5cKsfmkF75UuhA4iLs=
+github.com/buke/quickjs-go v0.4.13 h1:L2sA47ncFT75ZOVPwqr5qnJpX+7IxQ+DLPJD5pYMAz0=
+github.com/buke/quickjs-go v0.4.13/go.mod h1:DTNBNlQc+GflC2iemHKotAjdR5cKsfmkF75UuhA4iLs=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
